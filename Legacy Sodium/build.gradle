@@ -23,6 +23,13 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 
+
+repositories {
+    maven {
+        name 'tterrag maven'
+        url 'https://maven.tterrag.com/'
+    }
+}
 minecraft {
     mappings channel: 'snapshot', version: '20210309-1.16.5'
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -74,6 +81,8 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.4'
     // mixin
     annotationProcessor 'org.spongepowered:mixin:0.8.2:processor'
+    implementation fg.deobf("com.jozufozu.flywheel:Flywheel:1.16-0.2.4.52")
+    compileOnly fg.deobf("com.jozufozu.flywheel:Flywheel:1.16-0.2.4.52")
 }
 
 // ensure that the encoding is set to UTF-8, no matter what the system default is
